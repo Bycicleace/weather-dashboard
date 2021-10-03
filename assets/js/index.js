@@ -28,14 +28,11 @@ function GetCurrentWeather(city) {
         lat = data.coord.lat;
         lon = data.coord.lon;
 
-        console.log(cityName, lat, lon);
         fetch(baseURL + oneCall + "lat=" + lat + "&lon=" + lon + units + "&exclude=minutely,hourly,alerts" + apiKey)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
-            console.log(data);
-
             // Get current Weather information
             var today = new Date(data.current.dt * 1000);
             var currentDate = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
