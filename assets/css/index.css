@@ -1,0 +1,11 @@
+#title {
+    background: rgb(0,133,255);
+    background: linear-gradient(90deg, rgba(0,133,255,1) 0%, rgba(27,27,138,1) 65%, rgba(48,0,186,1) 100%);
+    color: white;
+}
+
+.darkBackground {
+    color: white;
+    background-color: rgb(45, 62, 80);
+    padding: 0;
+}

@@ -5,6 +5,8 @@ var apiKey = "&appid=9f83813e9ab90756e3c1b262e2589dbd"
 var units = "&units=imperial"
 var iconURL = "http://openweathermap.org/img/wn/"
 
+var recents = [];
+
 function GetCurrentWeather(city) {
     // Needs to return the following
     //   Name of the city
@@ -73,10 +75,13 @@ function GetCurrentWeather(city) {
                 var cardEl = document.createElement("div");
                 cardEl.classList.add("card");
                 cardEl.classList.add("col");
+                cardEl.classList.add("me-3");
+                cardEl.classList.add("darkBackground");
 
                 // Body for card
                 var cardBody = document.createElement("div");
                 cardBody.classList.add("card-body");
+                cardBody.classList.add("p-2")
 
                 // Date as the card title
                 var cardTitle = document.createElement("h5");
@@ -125,3 +130,16 @@ function GetCurrentWeather(city) {
         console.log("Error with latlong: " + error);
     });
 }
+
+// Search button handler
+document.getElementById("btnSearch").addEventListener("click", function(event) {
+    event.preventDefault();
+    var cityName = document.getElementById("inputCity").value;
+    if (cityName === "") {
+        console.log("Empty City");
+        document.getElementById("inputCity").classList.add("is-invalid");
+    } else {
+        GetCurrentWeather(cityName);
+        document.getElementById("inputCity").classList.remove("is-invalid");
+    }
+})
