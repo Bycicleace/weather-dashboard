@@ -51,8 +51,21 @@ function GetCurrentWeather(city) {
             document.getElementById("temperature-0").textContent = currentTemp;
             document.getElementById("wind-0").textContent = currentWind;
             document.getElementById("humidity-0").textContent = currentHumidity;
-            document.getElementById("uv-0").textContent = currentUVIndex;
+            
+            var UVEl = document.getElementById("uv-0")
+            UVEl.textContent = currentUVIndex;
 
+
+            UVEl.classList.remove("btn-success");
+            UVEl.classList.remove("btn-warning");
+            UVEl.classList.remove("btn-danger");
+            if (currentUVIndex < 6) {
+                UVEl.classList.add("btn-success");
+            } else if (currentUVIndex < 9) {
+                UVEl.classList.add("btn-warning");
+            } else {
+                UVEl.classList.add("btn-danger");
+            }
 
             // Get the parent div for all cards.
             var cardsDiv = document.querySelector("#future-forecast")
